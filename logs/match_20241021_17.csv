@@ -1,0 +1,33 @@
+2024-10-21T17:02:40+07:00,------------------ New Match 2 ------------------
+2024-10-21T17:02:40+07:00,Player A & Player B on the court
+2024-10-21T17:02:42+07:00,[Player A] is power shoot: 77
+2024-10-21T17:02:43+07:00,[Table] ping power : 63
+2024-10-21T17:02:43+07:00,[Player B] power return : 65
+2024-10-21T17:02:44+07:00,[Alert] Player B is ping power: 65 more than 63
+2024-10-21T17:02:44+07:00,------------------------------------------------
+2024-10-21T17:02:45+07:00,[Player B] is power shoot: 65
+2024-10-21T17:02:46+07:00,[Table] ping power : 50
+2024-10-21T17:02:46+07:00,[Player A] power return : 91
+2024-10-21T17:02:47+07:00,[Alert] Player A is ping power: 91 more than 50
+2024-10-21T17:02:47+07:00,------------------------------------------------
+2024-10-21T17:02:48+07:00,[Player A] is power shoot: 91
+2024-10-21T17:02:49+07:00,[Table] ping power : 70
+2024-10-21T17:02:49+07:00,[Player B] power return : 100
+2024-10-21T17:02:50+07:00,[Alert] Player B is ping power: 100 more than 70
+2024-10-21T17:02:50+07:00,------------------------------------------------
+2024-10-21T17:02:51+07:00,[Player B] is power shoot: 100
+2024-10-21T17:02:52+07:00,[Table] ping power : 81
+2024-10-21T17:02:52+07:00,[Player A] power return : 82
+2024-10-21T17:02:53+07:00,[Alert] Player A is ping power: 82 more than 81
+2024-10-21T17:02:53+07:00,------------------------------------------------
+2024-10-21T17:02:54+07:00,[Player A] is power shoot: 82
+2024-10-21T17:02:55+07:00,[Table] ping power : 61
+2024-10-21T17:02:55+07:00,[Player B] power return : 92
+2024-10-21T17:02:56+07:00,[Alert] Player B is ping power: 92 more than 61
+2024-10-21T17:02:56+07:00,------------------------------------------------
+2024-10-21T17:02:57+07:00,[Player B] is power shoot: 92
+2024-10-21T17:02:58+07:00,[Table] ping power : 75
+2024-10-21T17:02:58+07:00,[Player A] power return : 63
+2024-10-21T17:02:59+07:00,[Player A] is power: 63 less than 75
+2024-10-21T17:02:59+07:00,[Alert] Player B wins!
+2024-10-21T17:02:59+07:00,------------------- Game Over -------------------
