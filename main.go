@@ -8,7 +8,6 @@ import (
 
 func main() {
 
-	// Run both services concurrently
 	go func() {
 		log.Println("Starting Player Service on port 8888...")
 		player.PlayerService() // Start player service on port 8888
@@ -21,7 +20,5 @@ func main() {
 
 	// Block the main goroutine to prevent the application from exiting
 	select {}
-
-	// MongoDB connection string for localhost
 
 }

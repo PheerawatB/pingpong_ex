@@ -22,9 +22,8 @@ var countMatch uint = 0
 var mongoClient *mongo.Client
 var logMatch string
 
-// MatchLog represents the structure for match logs to be saved in MongoDB
 type MatchLog struct {
-	MatchID  uint      `json:"match_id" bson:"match_id"` // Ensure BSON tags are set for MongoDB
+	MatchID  uint      `json:"match_id" bson:"match_id"`
 	MatchLog string    `json:"match_log" bson:"match_log"`
 	Time     time.Time `json:"time" bson:"time"`
 }
@@ -39,7 +38,7 @@ func PlayerService() {
 		return
 	}
 	defer mongoClient.Disconnect(context.TODO())
-	countMatch, _ = getLastMatchID() // get last match id
+	countMatch, _ = getLastMatchID() // Get last match id
 
 	app := fiber.New()
 
@@ -85,7 +84,7 @@ func newMatch() string {
 	go func() {
 		for {
 			if closeCh {
-				break
+				break // Game over, exit the loop
 			}
 
 			select {
@@ -131,7 +130,6 @@ func newMatch() string {
 }
 
 func Player(power uint, wakeCh chan uint, name string, opponent string) bool {
-	// logToCSV(fmt.Sprintf("[%s] is power shoot: %d", name, power))
 	url := fmt.Sprintf("http://localhost:8889/ping-power?power=%d&name=%s", power, name)
 	res, err := http.Get(url)
 	if err != nil {
@@ -152,21 +150,16 @@ func Player(power uint, wakeCh chan uint, name string, opponent string) bool {
 			fmt.Println("Error converting response to integer:", err)
 			return false
 		}
-		// logToCSV(fmt.Sprintf("[Table] ping power : %d", bodyInt))
-		newPower := uint(rand.Intn(51)) + 50
 
+		newPower := uint(rand.Intn(51)) + 50
 		time.Sleep(1 * time.Second)
 
 		if newPower > uint(bodyInt) {
-			wakeCh <- newPower // Ensure the channel is receiving data
-			// logToCSV(fmt.Sprintf("[Alert] %s is ping power: %d more than %d", opponent, newPower, bodyInt))
+			wakeCh <- newPower
 			logToCSV(fmt.Sprintf("[%s] 🏓 💥 {%d} ========== [%d] ==========> 🏓 [%s] ", name, power, bodyInt, opponent))
-			// logToCSV("------------------------------------------------")
 			return true
 		} else {
-			// logToCSV(fmt.Sprintf("[%s] is power: %d less than %d", opponent, newPower, bodyInt))
 			logToCSV(fmt.Sprintf("[%s] 🏓 💥 {%d} ========== [%d] ==========> 💀 [%d] [%s] ", name, power, bodyInt, newPower, opponent))
-			// logToCSV("------------------------------------------------")
 			return false
 		}
 	}
@@ -174,10 +167,8 @@ func Player(power uint, wakeCh chan uint, name string, opponent string) bool {
 }
 
 func logToCSV(message string) {
-	// Print to the console (optional)
-	fmt.Println(message)
 
-	// Ensure the log directory exists
+	fmt.Println(message)
 	logDir := "./logs"
 	err := os.MkdirAll(logDir, os.ModePerm)
 	if err != nil {
@@ -241,7 +232,6 @@ func getLastMatchID() (uint, error) {
 		options.FindOne().SetSort(bson.D{{Key: "match_id", Value: -1}}),
 	).Decode(&lastMatch)
 	if err != nil {
-		// fmt.Println("Error getting last match ID:", err)
 		return 0, err
 	}
 
